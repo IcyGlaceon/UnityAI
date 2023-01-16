@@ -97,10 +97,11 @@ GameObject:
   - component: {fileID: 5315009117331830972}
   - component: {fileID: 5315009117331830973}
   - component: {fileID: 5315009117331830974}
+  - component: {fileID: 370640527482915192}
   - component: {fileID: 5315009117331830975}
   m_Layer: 0
-  m_Name: Agent
-  m_TagString: Untagged
+  m_Name: Agent02
+  m_TagString: Agent02
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4b88174ff5f40db4693e631d92f0e618, type: 2}
+  - {fileID: 2100000, guid: 8aa4832fc0bd1cf4d809977fe39cc80f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -199,9 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perception: {fileID: 5315009117331830975}
   movement: {fileID: 5315009117331830974}
-  wanderDistance: 1
-  wanderRadius: 3
-  wanderDisplacement: 5
+  flockPerception: {fileID: 370640527482915192}
+  data: {fileID: 11400000, guid: 5529cfe9399b0054bb7ad825accfb1d3, type: 2}
 --- !u!114 &5315009117331830974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +217,21 @@ MonoBehaviour:
   maxSpeed: 5
   minSpeed: 5
   maxForce: 5
+--- !u!114 &370640527482915192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315009117331830968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829a97db59f4a8044859bd156580889b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 4
+  maxAngle: 90
+  tagName: Agent02
 --- !u!114 &5315009117331830975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,5 +245,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 40
-  maxAngle: 45
-  tagName: 
+  maxAngle: 90
+  tagName: Agent01
