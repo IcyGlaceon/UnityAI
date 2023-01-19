@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class AutonomousAgent : Agent
 {
-    public Perception flockPerception;
+    [SerializeField] private Perception flockPerception;
+    public ObstacleAvoidance obstacleAvoidance;
     public AutonomousAgentData data;
 
     public float wanderAngle { get; set; } = 0;
@@ -36,7 +37,14 @@ public class AutonomousAgent : Agent
             movement.ApplyForce(Steering.Alignment(this, gameObjects) * data.alignmentWeight);
         }
 
+        // obstacle avoidance 
+        if (obstacleAvoidance.IsObstacleInFront())
+        {
+            Vector3 direction = obstacleAvoidance.GetOpenDirection();
+            movement.ApplyForce(Steering.CalculateSteering(this, direction) * data.obstacleWeight);
+        }
 
+        //movement
         if (movement.acceleration.sqrMagnitude <= movement.maxForce * 0.1f)
         {
             movement.ApplyForce(Steering.Wander(this));

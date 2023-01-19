@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4515114473623671333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7201072606260346272}
+  m_Layer: 0
+  m_Name: eye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7201072606260346272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4515114473623671333}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.489, z: 0.583}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5315009117331830961}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5315009116804162445
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,8 +128,9 @@ GameObject:
   - component: {fileID: 5315009117331830972}
   - component: {fileID: 5315009117331830973}
   - component: {fileID: 5315009117331830974}
-  - component: {fileID: 370640527482915192}
-  - component: {fileID: 5315009117331830975}
+  - component: {fileID: 575524061734035812}
+  - component: {fileID: 6900185387558474199}
+  - component: {fileID: 9204524751904737068}
   m_Layer: 0
   m_Name: Agent02
   m_TagString: Agent02
@@ -119,6 +151,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5315009116804162444}
+  - {fileID: 7201072606260346272}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -198,9 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f21a319759d6ed40ab6db28b9549e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perception: {fileID: 5315009117331830975}
+  perception: {fileID: 0}
   movement: {fileID: 5315009117331830974}
-  flockPerception: {fileID: 370640527482915192}
+  flockPerception: {fileID: 0}
+  obstacleAvoidance: {fileID: 0}
   data: {fileID: 11400000, guid: 5529cfe9399b0054bb7ad825accfb1d3, type: 2}
 --- !u!114 &5315009117331830974
 MonoBehaviour:
@@ -217,7 +251,7 @@ MonoBehaviour:
   maxSpeed: 5
   minSpeed: 5
   maxForce: 5
---- !u!114 &370640527482915192
+--- !u!114 &575524061734035812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,24 +260,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 5315009117331830968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 829a97db59f4a8044859bd156580889b, type: 3}
+  m_Script: {fileID: 11500000, guid: 692437315a1502e4f806aa9e6dd3448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 4
-  maxAngle: 90
-  tagName: Agent02
---- !u!114 &5315009117331830975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5315009117331830968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 829a97db59f4a8044859bd156580889b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 40
-  maxAngle: 90
   tagName: Agent01
+  distance: 1
+  maxAngle: 45
+  raycastTransform: {fileID: 0}
+  numRaycast: 2
+--- !u!114 &6900185387558474199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315009117331830968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692437315a1502e4f806aa9e6dd3448f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Agent02
+  distance: 1
+  maxAngle: 45
+  raycastTransform: {fileID: 0}
+  numRaycast: 2
+--- !u!114 &9204524751904737068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315009117331830968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e2386cfbd82d74ea91af410e064c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastTransform: {fileID: 0}
+  distance: 1
+  maxAngle: 45
+  numRaycast: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
